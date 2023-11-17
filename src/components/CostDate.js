@@ -7,17 +7,15 @@ const CostDate = (props) => {
 
   return (
     <div className='cost-items-box-date'>
-      CostDate
       <div>
         {year}
-        </div>
+      </div>
       <div>
         {month}
       </div>
       <div>
         {day}
       </div>
-
     </div>
   )
 }

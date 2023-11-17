@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-const CostForm = () => {
+const CostForm = (props) => {
 
   const [inputName, setInputName] = useState('');
   const [inputPrice, setInputPrice] = useState('');
@@ -11,15 +11,18 @@ const CostForm = () => {
       event.preventDefault();
 
       const userInput ={
-        name: inputName,
+        date: new Date(inputDate),
         price: inputPrice,
-        date: new Date(inputDate)
+        description: inputName
       };
+
+      props.onSaveCostData(userInput)
+
       setInputName('');
       setInputPrice('');
       setInputDate('');
 
-      console.log('From form', userInput);
+      // console.log('From form', userInput);
   }
 
   const handleNameChange =(event)=>{
@@ -46,7 +49,7 @@ const CostForm = () => {
       </div>
       <div className='form-element'>
         <label> Date </label>
-        <input type='date' min='2023-01-01' max='2023-12-31' value={inputDate} onChange={handleDateChange}/>
+        <input type='date' min='2020-01-01' max='2023-12-31' value={inputDate} onChange={handleDateChange}/>
       </div>
       <div className='form-element'>
         <button className='button submit' onClick={handleSubmit}>Add new</button>  
